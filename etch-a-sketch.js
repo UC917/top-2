@@ -33,3 +33,10 @@ function getRandomColor() {
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`;
 }
+
+// 实现渐进式变暗效果
+function darkenColor(color, percent) {
+    const rgb = color.match(/\d+/g).map(Number);
+    const newRgb = rgb.map(val => Math.max(val - (val * percent / 100), 0));
+    return `rgb(${newRgb[0]},${newRgb[1]},${newRgb[2]})`;
+}
