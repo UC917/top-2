@@ -28,10 +28,14 @@ function createGrid(size) {
 
 // 根据用户输入更改网格大小
 function changeGridSize() {
-    const newSize = prompt("请输入新网格每边的方格数（最大100）：");
-    if (newSize && !isNaN(newSize) && newSize > 0 && newSize <= 100) {
-        gridSize = parseInt(newSize);
+    const newSizeInput = prompt("请输入新网格每边的方格数（最大100）：");
+    const newSize = parseInt(newSizeInput, 10);
+
+    if (!isNaN(newSize) && newSize > 0 && newSize <= 100) {
+        gridSize = newSize;
         createGrid(gridSize);
+    } else {
+        alert("输入无效，请输入1到100之间的整数。");
     }
 }
 
