@@ -26,6 +26,28 @@ function createGrid(size) {
     }
 }
 
+// 根据用户输入更改网格大小
+function changeGridSize() {
+    const newSize = prompt("请输入新网格每边的方格数（最大100）：");
+    if (newSize && !isNaN(newSize) && newSize > 0 && newSize <= 100) {
+        gridSize = parseInt(newSize);
+        createGrid(gridSize);
+    }
+}
+
+// 重置画布
+function resetCanvas() {
+    const container = document.getElementById("container");
+    container.innerHTML = ''; // 清空容器
+    createGrid(gridSize); // 重新创建当前大小的网格
+}
+
+// 限制网格大小为16x16
+function limitGridSize() {
+    gridSize = 16;
+    createGrid(gridSize);
+}
+
 // 生成随机颜色
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
